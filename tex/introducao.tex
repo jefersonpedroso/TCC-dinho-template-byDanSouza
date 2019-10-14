@@ -1,0 +1,97 @@
+\chapter{Introdução}
+% Um Pouco da Historia e Evolução da Eletrônica
+Certamente a eletrônica é uma área do conhecimento que ganhou muito destaque no último século, com o uso da eletrônica a humanidade produziu adventos tecnológicos que literalmente provocaram mudanças sociais, e, nos dias atuais, produtos (equipamentos e dispositivos) e sistemas eletrônicos ocupam cada vez mais espaço de destaque na vida dos humanos, haja vista a utilização em massa de celulares, computadores, \textit{Smart TVs}, e vários outros produtos eletrônicos. A utilização em massa da eletrônica acarreta no fomento de mais novidades e adventos tecnológicos, criando assim um circulo virtuoso de inovações e consumo, porém este circulo virtuoso pode provocar alguns problemas, como veremos a seguir, principalmente no que se refere a interferências e compatibilidades entre dispositivos eletrônicos.
+
+%Vale ressaltar que mesmo ocorrido uma enorme evolução e uma alta taxa de utilização de eletrônicos ainda ocorre uma alta demanda por produtos e sistemas eletrônicos pelo mundo, isso acarreta no fomento de novidades, fabricantes e sistemas eletrônicos.
+
+% Alta utilização do espectro de frequência (Sistemas)
+Com o crescimento da quantidade de novos produtos, fabricantes e sistemas eletrônicos e com uma maior utilização da eletrônica digital no processamento de sinais e dados, os circuitos e sistemas eletrônicos tendem a ter mais pulsos e chaveamentos em suas operações, isso acarreta no aumento de emissões eletromagneticas irradiadas e conduzidas que cada vez mais ocupam um papel de destaque e preocupação dos desenvolvedores de produtos e sistemas eletrônicos.
+
+%evidencia-se um amento no uso de diferentes frequências (diferentes sinais de pulsos e dados, com frequências diferentes de operação), tanto na forma irradiada (rádios, sistemas de comunicação, radares, etc.) quanto na forma conduzida (pulsos, dados, chaveamentos). Esse acréscimo do uso de frequências, gera uma ocupação cada vez maior de um amplo espectro das radiações eletromagnéticas ocasionando um elevado nível de uso dessas radiações nos meios irradiados e conduzidos.
+
+% Susceptibilidade e Interferência dos equipamentos e sistemas eletrônicos
+%Em contrapartida, 
+Os circuitos eletrônicos precisam atender normas e padrões de qualidade quanto as emissões eletromagneticas irradiadas e conduzidas, e, além disso, devem ser imunes a possíveis interferências das varias emissões que estão a todo momento sendo irradiadas no meio, surge assim uma preocupação latente, para que os produtos e sistemas eletrônicos emitam com intensidades que estejam dentro de limites estabelecidos em normas e que não sejam \textbf{susceptíveis} a interferência de irradiações espúrias que possam estar presente no meio.
+
+% Estudo e análise de compatibilidade eletromagnetica
+A área de conhecimento que tem como principal preocupação a busca pelo atendimento das exigências das normas e de Interferência Eletromagnética (\textit{Electromagnetic Interference} - EMI) dos circuitos eletrônicos é a Compatibilidade Eletromagnética (\textit{Eletromagnetic Compatibility} - EMC), onde é estudado métodos e soluções aplicáveis á circuitos eletrônicos no intuito de deixar suas emissões condicionadas aos padrões de normas e regulações e também deixar os circuitos menos susceptíveis a emissões espúrias.
+
+%para isso a EMC busca entender e solucionar os problemas de susceptibilidade e interferência acarretados ou ocasionados pelos circuitos eletrônicos, para isso existe uma gama de técnicas e ferramentas, sendo uma destas a investigação direta, no circuito desejado, através de pontas de provas, da frequência problemática. Esta técnica vem sendo apontada como uma alternativa viável à analises de EMC em circuitos eletrônicos com alta densidade de componentes por $mm^2$. % Densidade eletrônica 
+Um dos problemas de EMC, de maior destaque na atualidade é o rastreamento de pontos de emissão de irradiações eletromagnéticas em circuitos eletrônicos com alta densidade de componentes, que ficam agrupados em placas de circuito impresso (PCI) muito proximos, elevando assim a taxa de ocupação por $mm^2$. Esta alta densidade de componentes vem se tornando uma tendência, tanto pelo fato de que os circuitos estão cada vez mais sofisticados e buscam solucionar maiores problemas, quanto pelo fato da miniaturização desses circuitos, portanto, quanto maior a densidade de componentes maior é o desafio tecnológico proposto.
+
+
+%isso acarreta em um desafio ao estudo da EMC, pois há a necessidade de criação de métodos que trabalhem com dimensões cada vez menores.
+% Identificar a fonte de EMI 
+
+% Ponta de Provas para Campo-Proximo
+
+% Comentar o que será tratado em cada capitulo
+Estudos como o de \cite{sivaraman2017} apontam na direção do desenvolvimento de pontas de provas, para a obtenção de medidas de campo próximo afim de proporcionar uma ferramenta mais adequada para análises de EMC em circuitos com alta densidade de componentes eletrônicos. Diante disso, este trabalho visa trazer uma contribuição para o desenvolvimento no IFSC de pontas de prova de campo próximo (\textit{Near Field Probe} - NFP) em placas de circuito impresso que sejam de fácil construção e de baixo custo a serem aplicadas em análises de EMC.
+
+%Apontar os estudos na área para criação de pontas de provas
+%O desenvolvimento de instrumentos para medir campos próximos não é nada recente, em 
+%An Overview of Near-Field Antenna Measurements
+%\cite{yaghjian1986} já temos uma revisão sobre este assunto. porém com o passar dos anos e com a evolução da eletrônica e sua tendência à miniaturização o assunto se tornou cada vez mais frequênte e relevante. em 
+%Standard Probes for Electromagnetic Field Measurements
+%\cite{kanda1993} temos um estudo que aponta na direção das pontas de provas como solução para obtenção de medidas de campo próximo. 
+
+%Nota-se em 
+%Design of magnetic probes for near field measurements and the development of algorithms for the prediction of EMC
+%\cite{sivaraman2017} uma preocupação recente na busca por pontas de provas fáceis de serem contruidas e caracterizadas. É nessa linha que se propõe-se seguir neste trabalho, estudar e caracterizar pontas de provas de baixo custo e fácil construção a serem aplicadas na obtenção de medidas de campo magnético próximo em análises de EMC.
+
+A partir deste trabalho, existe a intenção do desenvolvimento, também no IFSC, de um sistema automatizado de rastreamento de sinais em placas de circuitos eletrônicos, utilizando as NFP desenvolvidas neste trabalho, este sistema automatizado contribuiria significativamente para a eficiência das análises de EMC no IFSC, haja vista que hoje os rastreamentos dos sinais são realizados manualmente, o que demandam muito tempo de horas trabalhadas. 
+
+Este trabalho foi divido em 7 capítulos assim dispostos. No capitulo 2 será discorrido sobre a fundamentação teorica que está por tráz da análise de EMC e do desenvolvimento de NFP, sua caracterização e estudo. No capitúlo 3 aborda-se-á a respeito do estudo das caracteristicas das NFP, seus aspectos de modelagem eletromagnética. No capitúlo 4 será demonstrado a metodologia e os procedimentos utilizados na investigação experimental das NFP desenvolvidas. No capitúlo 5 se disocorrer-se-á sobre as caracteristicas levantadas. E por fim, No capitúlo 6 será trazido a tona possiveis aplicações futuras, considerações finais e as conclusões.
+
+\section{Justificativa}
+% uma forma rápida e precisa de investigar os focos de emissão de radiação é através das pontas de provas (comentar do sistema de varreduda eletronico e automatico para este processso) 
+\citeonline{sivaraman2017} aponta que uma forma eficaz para investigar problemas de EMI e efetuar análises de EMC em circuitos eletrônicos é através do rastreamento de sinais utilizando NFP, no intuito de identificar o exato ponto nesses circuitos de onde a emissão ocorre. 
+
+%Certamente, um profissional qualificado utilizando alguma ponta de prova, terá a capacidade de identificar, de forma satisfatória e relativamente rápida, o ponto exato da emissão investigada. Porém, com a alta demanda de desenvolvimento, e com a tendência de miniaturização dos circuitos eletrônicos, nem sempre haverá algum profissional para realizar uma análise precisa e satisfatória.
+
+Este trabalho visa apontar uma via alternativa e de baixo custo (utilizando para isso topologias em leiautes de placas de circuito impresso) para o desenvolvimento de NFP que obtenham medidas satisfatórias de campo próximo. Além disso este trabalho poderá servir de base para o desenvolvimento de ferramentas automatizadas para análises de EMC, dispensando assim recurso humano e podendo tornar o processo mais rápido e eficaz.
+
+% Pontas de provas comerciais são caras
+% 1) Uma forma rápida de obter pontas de provas
+% 2) Ponta de Prova de baixo custo. Comparar com modelos comercias
+% 3) Altissima plasticidade nas topologias. Pode-se desenhar, projetar uma gama alta de topologias, Redes ou sistemas de pontas de provas
+
+% além disso prover uma ponta de prova mais barata de de fácil fabricação
+
+\section{Definição do Problema}
+O problema principal deste trabalho consiste em responder o seguinte questionamento. É possível apontar uma solução de leiaute para o desenvolvimento de NFP, em placas de ciruito impresso (PCI), que obtenham medidas de campo próximo afim de realizar o rastreamento de sinais em placas de circuitos eletrônicos?
+
+\section{Objetivos}
+
+% 3 Diametros (Face Simples) (Sem e Com Plano Terra)
+% 3 Diamentro (Face Dupla)  (Sem e Com Plano Terra)
+
+\subsection{Objetivo Geral}
+De forma direta tem-se como objetivo:
+
+\begin{itemize}
+\item Estudar, desenvolver e investigar experimentalmente topologias em placas de circuito impresso para pontas de prova de campo próximo que sejam eficientes e de baixo custo para a obtenção de medidas de campo magnético próximo em análises de compatibilidade eletromagnética.
+\end{itemize}
+
+% Estudar e caracterizar desenhos eficientes e de baixo custo de pontas de prova para a investigação de EMC em placas de PCI
+
+Para alcançar tal objetivo geral elencou-se alguns objetivos especificos.
+
+\subsection{Objetivos Específicos}
+
+\begin{alineas}
+\item Estudar o modelo eletromagnético das pontas de provas.
+\item Implementar topologias de pontas de provas em placas de circuito impresso.
+\item Caracterizar a resposta em frequência de pontas de provas impressas em PCI.
+\item Investigar a resolução espacial das pontas de provas.
+\item Investigar a influência do tamanho do raio da espira na sensibilidade das pontas de provas.
+\item Investigar a influência do número de espiras na sensibilidade e resolução espacial das pontas de provas.
+\item Investigar a influência do plano de terra (ou plano de referência) na resolução espacial, sensibilidade e largura de banda das pontas de prova.
+%\item Identificar e mensurar parametros essencias das pontas de provas nas difentes topologias (Fator de Antena, Sensitividade, Seletividade, Resolução Espacial e Largura de Banda).
+\item Comparar quantitativamente e qualitativamente as diferentes topologias.
+%item Implementar uma rede de pontas de provas para obtenção de medidas de campo magnético proximo.
+%\item Caracterizar a resposta em frequência da rede de pontas de provas impressa em PCI
+%\item Identificar e mensurar parametros essencias da rede de pontas de provas (Fator de Antena, Sensitividade, Seletividade, Resolução Espacial e Largura de Banda).
+%\item Comparar quantitativamente e qualitativamente a rede de pontas de provas com a topologia de ponta de prova única.
+\item Comparar qualitativamente a resposta em frequência e largura de banda das pontas de provas desenvolvidas com outras soluções comerciais.
+\end{alineas}

@@ -1,0 +1,414 @@
+\documentclass{ifscTCC} % Definicao do documentclass ifscTCC	
+
+% ----------------------------------------------------------
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ----------------------------------------------------------
+% Identificadores do trabalho - Usados para preencher os elementos pré-textuais
+\instituicao[o]{Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina} % Opcional
+\departamento[o]{Departamento Acadêmico de Eletrônica}
+\curso[o]{Curso Superior de Engenharia Eletrônica}
+\documento[o]{TCC} % [o] para dissertação [a] para tese
+\preambulo{Trabalho de conclusão de curso submetido ao Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina como parte dos requisitos para obtenção do título de engenheiro eletrônico}
+\titulo{Pontas de prova de campo próximo em placas de circuito impresso: estudo, desenvolvimento e investigação experimental}
+
+% 1 -> Estudo e caracterização de pontas de prova para obtenção de medidas de campo magnético próximo em análises de compatibilidade eletromagnetica
+
+% 2 -> Pontas de prova de campo próximo em placas de circuito impresso: estudo, desenvolvimento e investigação experimental.
+
+
+%\subtitulo{Subtítulo (se houver)} % Opcional
+\autor{Daniel Henrique Camargo de Souza}
+\grau{Bacharel}
+\local{Florianópolis} % Opcional (Florianópolis é o padrão)
+\data{2019}
+%\orientador[Orientador:\\]{Prof. Dr. Luis Carlos Martinhago Schlichting}
+%\coorientador[Coorientador\\Universidade ...]{Prof. Dr.}
+%\coordenador[Coordenador\\Universidade ...]{Prof. Dr. }
+
+%---------------------------------------------------------------------
+% Início do documento
+%---------------------------------------------------------------------
+\begin{document}
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% CAPA SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+%\imprimircapa  %Comando Padrão do Abntex2 (Formato Diferente do IFSC)
+\begin{capa}%
+    \begin{SingleSpacing}
+        \center\ABNTEXchapterfont\bfseries\ INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DE\\SANTA CATARINA - CÂMPUS FLORIANÓPOLIS\\DEPARTAMENTO ACADÊMICO DE ELETRÔNICA\\CURSO SUPERIOR DE ENGENHARIA ELETRÔNICA
+        
+        \vspace*{3.0cm}     % três espaços simples - conforme norma para TCC do IFSC
+        
+        \ABNTEXchapterfont\bfseries\MakeUppercase\imprimirautor
+
+        \begin{vplace}[0.5]
+            \begin{center}
+                \ABNTEXchapterfont\SingleSpacing\bfseries\Large\MakeUppercase\imprimirtitulo
+            \end{center}
+        \end{vplace}
+        
+        \begin{center}
+            \ABNTEXchapterfont\bfseries\ FLORIANÓPOLIS, 2019
+        \end{center}
+    \end{SingleSpacing}
+\end{capa}
+
+% ----------------------------------------------------------
+% FOLHA DE ROSTO SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+% Comando Padrão do Abntex2 % (o * indica que haverá a ficha bibliográfica) (Formato Diferente do IFSC)
+% \imprimirfolhaderosto*
+% \imprimirfolhaderosto
+\begin{capa}%
+    \begin{SingleSpacing}
+        \center
+        \ABNTEXchapterfont\bfseries\ INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DE\\SANTA CATARINA - CÂMPUS FLORIANÓPOLIS\\DEPARTAMENTO ACADÊMICO DE ELETRÔNICA\\CURSO SUPERIOR DE ENGENHARIA ELETRÔNICA
+        
+        \vspace*{3.0cm}     % três espaços simples - conforme norma para TCC do IFSC
+        
+        \ABNTEXchapterfont\bfseries\MakeUppercase\imprimirautor
+        
+        %\begin{vplace}[0.5]
+        \vspace*{\fill} 
+            \begin{center}
+                \ABNTEXchapterfont\SingleSpacing\bfseries\Large\MakeUppercase\imprimirtitulo
+            \end{center}
+        \vspace*{\fill} 
+        %\end{vplace}
+        
+        \hspace{.45\textwidth}
+        \begin{minipage}{.5\textwidth}
+            \begin{SingleSpacing}
+                \normalfont\imprimirpreambulo
+                \vspace*{1.0cm}
+                
+                Orientador:\\Prof. Dr. Luis Carlos Martinhago Schlichting
+            \end{SingleSpacing}
+        \end{minipage}%
+        \vspace*{\fill} 
+        
+        \begin{center}
+            \ABNTEXchapterfont\bfseries\ FLORIANÓPOLIS, 2019
+        \end{center}
+    \end{SingleSpacing}
+\end{capa}
+
+% ----------------------------------------------------------
+% FICHA DE IDENTIFICAÇÃO (CATALOGRÁFICA) APROVAÇÃO SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+\includepdf{./pdf/fichacatalografica_final.pdf}     %Para Inclusão de modelo fornecido pela Biblioteca
+\cleardoublepage
+
+% \begin{fichacatalografica}
+%    \sffamily
+%    \vspace*{15cm}    % Posição vertical
+%    \hrule    % Linha horizontal
+%    
+%    \begin{center}
+%        % Minipage Centralizado
+%        \begin{minipage}[c]{12.5cm} % Largura
+%            \imprimirautor
+%            \hspace{0.5cm} \imprimirtitulo / \imprimirautor. --
+%            \imprimirlocal, \imprimirdata-
+%            \hspace{0.5cm} \pageref{LastPage} p. : il.(alguma color.); 30 cm.%\\
+%            \hspace{0.5cm} \imprimirorientadorRotulo \imprimirorientador\\
+%            \hspace{0.5cm}
+%            \parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+%            \imprimirdata.}\\
+%            \hspace{0.5cm}
+%            1. Palavra-chave1.
+%            2. Palavra-chave2.
+%            I. Orientador.
+%            II. Universidade xxx.
+%            III. Faculdade de xxx.
+%            IV. Título\\
+%            \hspace{8.75cm} CDU 02:141:005.7\\
+%        \end{minipage}
+%    \end{center}
+%    \hrule
+% 
+% \end{fichacatalografica}
+% ----------------------------------------------------------
+% ERRATA SEGUINDO NORMA TCC IFSC (OPCIONAL)
+% ----------------------------------------------------------
+%\begin{errata}
+%    FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina
+%    Veterinária e Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+%    \begin{table}[htb]
+%        \center
+%        \footnotesize
+%        \begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
+%            \hline
+%            \textbf{Folha} & \textbf{Linha} & \textbf{Onde se lê} &
+%            \textbf{Leia-se}\\
+%            \hline
+%            1 & 10 & auto-conclavo & autoconclavo\\
+%            \hline
+%        \end{tabular}
+%    \end{table}
+%\end{errata}
+%
+% ----------------------------------------------------------
+% FOLHA APROVAÇÃO SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+\setcounter{page}{4}
+\includepdf{./pdf/folhadeaprovacao_final.pdf}     %Após as assinaturas é incluido digitalizado
+% \begin{folhadeaprovacao}
+%     \begin{center}
+%         \begin{center}
+%             \ABNTEXchapterfont\SingleSpacing\bfseries\Large\MakeUppercase\imprimirtitulo
+%         \end{center}
+%             
+%         \vspace*{2.0cm}
+%             
+%         \ABNTEXchapterfont\normalsize\bfseries\MakeUppercase\imprimirautor
+%             
+%         \vspace*{1.0cm}
+%     \end{center}
+%     
+%     
+%     \noindent\OnehalfSpacing Este Trabalho foi julgado adequado para obtenção do Título de Engenheiro Eletrônico em Julho de 2019 e aprovado na sua forma final pela banca examinadora do Curso de Engenharia Eletrônica do Instituto Federal de Educação Ciência, e Tecnologia de Santa Catarina.
+%         
+%     \vspace*{1.0cm}
+%     \begin{center}    
+%         \imprimirlocal, 10 de Julho de 2019.
+%     \end{center}
+%     
+%     \noindent Banca Examinadora:
+%     
+%     \assinatura{Luis Carlos Martinhago Schlichting, Dr.}
+%     \assinatura{Cláudio Luis Ebert, Dr.}
+%     \assinatura{Golberi de Salvador Ferreira, Dr.}
+% 
+% \end{folhadeaprovacao}
+\cleardoublepage
+
+% ----------------------------------------------------------
+% DEDICATORIA SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+% \begin{dedicatoria}
+% 
+%  \vspace*{20cm}  
+%  \hspace*{7cm}
+%  Para Voçê
+%  
+% \end{dedicatoria}
+
+
+% ----------------------------------------------------------
+% AGRADECIMENTOS SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+\begin{agradecimentos}
+    \begin{itemize}
+        \item Aos Colegas de graduação que tornaram a jornada mais um pouco mais agradável e divertida.
+        \item Aos Professores do Departamento de Eletrônica do IFSC, pela paciência e dedicação que empenham em seus ensinamentos.
+        \item Ao Professor Orientador - Dr. Luis Carlos Martinhago Schlichting (famoso Espirro), pelo suporte, parceria e dedicação em suas orientações e sugestões.
+        \item Aos Colegas do LabCEM (IFSC), Pedro Bastos e Arihé Redivo Ramos, por suas sugestões parceria e apoio.
+        \item Ao Técnico Fábio Pacheco, pelo suporte, ajuda e presteza sempre que solicitado.
+        \item Ao \LaTeX que coloca o Word no chinelo.
+    \end{itemize}
+
+\end{agradecimentos}
+
+
+% ----------------------------------------------------------
+% EPIGRAFE SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+%\begin{epigrafe}
+%	
+%    \noindent\textit{‘‘Não vos amoldeis às estruturas deste mundo, \\
+%    mas transformai-vos pela renovação da mente, \\
+%    a fim de distinguir qual éa vontade de Deus: \\
+%    o que é bom, o que Lhe éagradável, o que éperfeito.\\
+%    (Bíblia Sagrada, Romanos 12, 2)}
+%    
+%\end{epigrafe}
+
+% ----------------------------------------------------------
+% RESUMO SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+% resumo na língua vernácula (obrigatório)
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+
+\begin{resumo}
+% Passos para um bom RESUMO
+% 
+% 1 - Explicar tema e relevância
+% 2 - Justificativa
+% 3 - Objetivo
+% 4 - Metodologia (Qualitativo, Quantitativo, Estudo de Caso)
+% 5 - Resultados Significativos
+% 6 - Breve Conclusão
+% 7 - Palavras chaves (no mínimo três)
+A Eletrônica é uma área do conhecimento de grande destaque na sociedade moderna. Nos últimos tempos, vem ocorrendo o desenvolvimento de um grande número de sistemas e dispositivos eletrônicos e estes devem estar adequados a padrões de compatibilidade e susceptibilidade eletromagnética. Para verificar se os sistemas e dispositivos eletrônicos estão adequados às normas e padrões exigidos, existem alguns métodos e procedimentos, sendo o foco deste trabalho a técnica de rastreamento de sinal utilizando pontas de provas de campo próximo. Este trabalho objetiva apontar uma via alternativa e de baixo custo para o desenvolvimento de pontas de prova de campo próximo que obtenham medidas satisfatórias visando análises de compatibilidade eletromagnética. Busca-se assim estudar, desenvolver e investigar experimentalmente o funcionamento e características de pontas de prova de campo magnético próximo construídas em placa de circuito impresso. Foram desenvolvidas, ao todo, 20 pontas de provas, e, ao final, conseguiu-se apontar uma alternativa viável com resultados próximos a soluções comerciais existentes.
+
+\noindent
+\textbf{Palavras-chaves}: Pontas de Prova, Campo Magnético Próximo, Compatibilidade Eletromagnética. 
+
+\end{resumo}
+
+% ----------------------------------------------------------
+% ABSTRACT SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+\begin{resumo}[ABSTRACT]
+\begin{otherlanguage*}{english}
+Electronics is an area of ​​knowledge of great prominence in modern society. The development of a large number of electronic systems and devices has been occuring recently and they must be adapted to standards of compatibility and electromagnetic susceptibility. In order to verify if electronic systems and devices are adequate to the norms and standards required, there are some methods and procedures. The focus of this work is the technique of signal tracing using near field probes. This work aims to point out an alternative and low cost pathway for the development of near field probes that obtain satisfactory measurements for electromagnetic compatibility analysis. The goal is to study, develop and experimentally investigate the operation and characteristics of near field probes built in printed circuit board. A total of 20 near field probes were developed, and, in the end, a feasible solution was found with results close to existing commercial solutions.
+
+
+\noindent
+\textbf{Key-Words}: Near Field Probe, Nearby Magnetic Field, Electromagnetic Compatibility. 
+\end{otherlanguage*}
+\end{resumo}
+
+% ----------------------------------------------------------
+% LISTA DE ILUSTRAÇÕES
+% ----------------------------------------------------------
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% LISTA DE TABELAS
+% ----------------------------------------------------------
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% LISTA DE ABREVIATURAS E SIGLAS
+% ----------------------------------------------------------
+\begin{siglas}
+   \item[EMC] \textit{Electromagnetic Compatibility} - Compatibilidade Eletromagnética
+   \item[EMI] \textit{Electromagnetic Interference} -Interferência Eletromagnética
+   \item[PCI] Placa de Circuito Impresso
+   \item[ESD] \textit{Electrostatic Discharge} - Descarga Eletrostática
+   \item[EMP] \textit{Electromagnetic Pulse} - Pulso Eletromagnético
+   \item[FCC] \textit{Federal Communication Commission}
+   \item[CISPR] \textit{Comité International Special des Perturbations Radioélectriques}
+   \item[IEC] \textit{International Electrotechnical Commission}
+   \item[LISN] \textit{Line Impedance Stabilization Network}
+   \item[NFP] \textit{Near-Field Probe} - Sonda de Campo Próximo
+   \item[DUT] \textit{Device Under Test} - Dispositivo Sob Teste
+   \item[OATS] \textit{Open-Area Test Site} - Local de Teste de Área Aberta
+   \item[SAC] \textit{Semi Anechoic Chamber} - Câmara Semi Anecoíca
+   \item[CI] Circuito Integrado
+   \item[CC] Corrente Contínua
+   \item[CA] Corrente Alternada
+   \item[CMOS] \textit{Complementary Metal Oxide Semiconductor} - Semicondutor de metal-óxido complementar
+   \item[FR4] \textit{Flame Retardant 4} - Designação de classe para material laminado de epóxi reforçado com vidro utilizado em PCI
+   \item[SMD] \textit{Surface-Mount Device} - Componente Montado na Superfície
+   \item[SMA] \textit{SubMiniature version A} - Conector Coaxial de RF de $50\Omega$
+   \item[IFSC] Instituto Federal de Educação Ciência e Tecnologia de Santa Catarina
+%   \item[VDC] \textit{Voltage Direct Current} - Tensão Contínua
+%   \item[VAC] \textit{Voltage Alternating Current} - Tensão Alternada
+%   \item[ABNT] Associação Brasileira de Normas Técnicas
+   \item[abnTex] Normas da ABNT para \LaTeX
+   \end{siglas}
+
+% ----------------------------------------------------------
+% LISTA DE SIMBOLOS
+% ----------------------------------------------------------
+\begin{simbolos}
+   \item[$V$] Volts - Unidade de potencial elétrico
+   \item[$A$] Ampere - Unidade de corrente elétrica
+   \item[$\Omega$] Ohms - Unidade de resistência elétrica
+   \item[$F$] Faradays - Unidade de capacitância elétrica
+   \item[$H$] Henry - Unidade de indutância elétrica
+   \item[$W$] Watt's - Unidade de potência elétrica
+   \item[$Hz$] Hertz - Unidade de frequência (ciclos por segundo)
+   \item[$VA$] Volt-Ampere - Unidade de potência elétrica
+   \item[$dB\mu V$] Decibel microVolt - Decibéis relativos a um microVolt
+   \item[$dB\mu V/m$] Decibel microVolt por metro - Decibéis relativos a um microVolt por metro
+   \item[$mm$] Milimetros - Unidade de comprimento (1 metro divido por Mil)
+   \item[$mm^{2}$] Milimetros Quadrados - Unidade de área
+   \item[$\,^{\circ}\mathrm{C}$] Grau Celcius - Unidade de temperatura
+\end{simbolos}
+
+% ----------------------------------------------------------
+% SUMÁRIO
+% ----------------------------------------------------------
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% Cores para os códigos do MatLab
+\definecolor{mygreen}{RGB}{28,172,0}    % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}  % o lilas para códigos do MatLab
+
+\lstset{language=Matlab,            %Que tipo de linguaguem os códigos serão
+    %basicstyle=\color{red}, 		%normal fontsize
+    %basicstyle=\ttfamily\footnotesize 	%fontsize small
+    basicstyle=\ttfamily\scriptsize,		%fontsize verysmall
+    %breaklines=false,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=5pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+% Elimina o Cabeçalho
+\pagestyle{parpage}
+
+%\part{Introdução}
+\include{./tex/introducao}
+\include{./tex/fundamentacao}
+\include{./tex/estudorealizado}
+\include{./tex/metodosprocedimentos}
+\include{./tex/resultadosdiscussoes}
+\include{./tex/conclusao}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS 
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% REFERÊNCIAS BIBLIOGRÁFICAS
+% ----------------------------------------------------------
+\bibliography{./bib/bibTCC}
+
+% ----------------------------------------------------------
+% GLOSSARIO
+% ----------------------------------------------------------
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%\glossary
+
+% ----------------------------------------------------------
+% APÊNDICES
+% ----------------------------------------------------------
+%\begin{apendicesenv}
+\apendices
+\include{./tex/apendices}
+%\end{apendicesenv}
+
+% ----------------------------------------------------------
+% ANEXOS
+% ----------------------------------------------------------
+% \begin{anexosenv}[ANEXOS]
+% %\anexos
+% \include{./tex/anexos}
+% \end{anexosenv}
+
+%-----------------------------------------------------------
+% INDICE REMISSIVO
+%-----------------------------------------------------------
+% \phantompart
+% \printindex
+
+\end{document}

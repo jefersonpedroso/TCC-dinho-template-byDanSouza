@@ -1,0 +1,364 @@
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,             % idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+% Definicao da geometria da página - Conforme Norma dos TCC IFSC
+\RequirePackage[
+    inner=3.0cm,
+    outer=2.0cm,
+    top=3.0cm,
+    bottom=2.0cm,
+    head=0.7cm,
+    foot=0.7cm
+    ]{geometry}
+    
+
+% ----------------------------------------------------------
+% PACOTES
+% ----------------------------------------------------------
+
+\usepackage{helvet}             % Fonte Arial 
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{float}
+\usepackage[final]{pdfpages}
+
+\usepackage{microtype} 			% para melhorias de justificação
+
+% Pacotes adicionais, usados no anexo do modelo de folha de identificação
+
+\usepackage{multicol}
+\usepackage{multirow}
+
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+
+\usepackage{lipsum}				% para geração de dummy text
+
+% Pacotes de citações
+
+\usepackage[brazilian,hyperpageref]{backref}	% Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}				% Citações padrão ABNT
+
+% ----------------------------------------------------------
+% CONFIGURAÇÕES DE PACOTES
+% ----------------------------------------------------------
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\renewcommand{\familydefault}{\sfdefault}             % Fonte Arial
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+\setlength{\parindent}{2.0cm}   % Identação do paragrafo conforme norma dos TCC IFSC
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+	
+% Comandos criados pelo usuário
+\newcommand{\afazer}[1]{{\color{red}{#1}}} % Para destacar uma parte a ser trabalhada
+\newcommand{\ABNTbibliographyname}{REFERÊNCIAS} % Necessário para abnTeX 0.8.2
+
+% ----------------------------------------------------------
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ----------------------------------------------------------
+\titulo{MY TCC: by Dansouza}
+\autor{Daniel Henrique Camargo de Souza}
+\local{Florianópolis, SC - Brasil}
+\data{15 de Agosto de 2018}
+\instituicao{%
+  Instituto Federal de Santa Catarina - IFSC
+  \par
+  Departamento Acadêmico de Eletrônica - DAELN
+  \par
+}
+\tipotrabalho{TCC}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Relatorio Técnico referênte ao estudo da Camada Física, Modulações e Codificação de Linha, da disciplina de Redes de Computadores - RCP22108}
+
+\orientador[Orientador\\Universidade ...]{Prof. Dr.}
+\coorientador[Coorientador\\Universidade ...]{Prof. Dr.}
+%\coordenador[Coordenador\\Universidade ...]{Prof. Dr. }
+
+%\numerodemembrosnabanca{4} % Isso decide se haverá uma folha adicional
+%\orientadornabanca{nao} % Se faz parte da banca definir como sim
+%\coorientadornabanca{sim} % Se faz parte da banca definir como sim
+%\bancaMembroA{Primeiro membro\\Universidade ...} %Nome do presidente da banca
+%\bancaMembroB{Segundo membro\\Universidade ...}      % Nome do membro da Banca
+%\bancaMembroC{Terceiro membro\\Universidade ...}     % Nome do membro da Banca
+%\bancaMembroD{Quarto membro\\Universidade ...}       % Nome do membro da Banca
+%\bancaMembroE{Quinto membro\\Universidade ...}       % Nome do membro da Banca
+%\bancaMembroF{Sexto membro\\Universidade ...}        % Nome do membro da Banca
+%\bancaMembroG{Sétimo membro\\Universidade ...}       % Nome do membro da Banca
+
+
+% Configurações de aparência do PDF final
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	%pdfcreator={LaTeX with abnTeX2},
+	%pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+	colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,		          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+	urlcolor=blue,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ----------------------------------------------------------
+% compila o indice
+% ----------------------------------------------------------
+\makeindex
+% ---
+
+% ---------------------------------------------------------------------
+% Início do documento
+% ---------------------------------------------------------------------
+\begin{document}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red}, 		%normal fontsize
+    %basicstyle=\ttfamily\footnotesize 	%fontsize small
+    basicstyle=\ttfamily\scriptsize,		%fontsize verysmall
+    %breaklines=false,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\pretextual
+
+% ----------------------------------------------------------
+% CAPA SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+%\imprimircapa  %Comando Padrão do Abntex2
+\begin{capa}%
+    \center
+    \ABNTEXchapterfont\bfseries\ INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DE\\SANTA CATARINA - CÂMPUS FLORIANÓPOLIS\\DEPARTAMENTO ACADÊMICO DE ELETRÔNICA\\CURSO SUPERIOR DE ENGENHARIA ELETRÔNICA
+    
+    \vspace*{3.0cm}     % três espaços simples - conforme norma para TCC do IFSC
+    
+    \ABNTEXchapterfont\bfseries\ DANIEL HENRIQUE CAMARGO DE SOUZA
+
+    \begin{vplace}[0.5]
+        \begin{center}
+            \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+        \end{center}
+    \end{vplace}
+    
+    \ABNTEXchapterfont\bfseries\ FLORIANÓPOLIS, 2019
+\end{capa}
+
+
+% ----------------------------------------------------------
+% FOLHA DE ROSTO SEGUINDO NORMA TCC IFSC
+% ----------------------------------------------------------
+% Comando Padrão do Abntex2 
+% (o * indica que haverá a ficha bibliográfica)
+% \imprimirfolhaderosto*
+% \imprimirfolhaderosto
+\begin{capa}%
+    \center
+    \ABNTEXchapterfont\bfseries\ INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DE\\SANTA CATARINA - CÂMPUS FLORIANÓPOLIS\\DEPARTAMENTO ACADÊMICO DE ELETRÔNICA\\CURSO SUPERIOR DE ENGENHARIA ELETRÔNICA
+    
+    \vspace*{3.0cm}     % três espaços simples - conforme norma para TCC do IFSC
+    
+    \ABNTEXchapterfont\bfseries\ DANIEL HENRIQUE CAMARGO DE SOUZA
+    
+    \begin{vplace}[0.5]
+        \begin{center}
+            \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+        \end{center}
+    \end{vplace}
+	
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \SingleSpacing
+        \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+
+    \large\imprimirorientadorRotulo~\imprimirorientador\par
+    \large\imprimircoorientadorRotulo~\imprimircoorientador    
+    
+    \ABNTEXchapterfont\bfseries\ FLORIANÓPOLIS, 2019
+\end{capa}
+
+% ---
+% Anverso da folha de rosto:
+% ---
+
+% resumo na língua vernácula (obrigatório)
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+
+\begin{resumo}
+ 
+As fontes de alimentação são equipamentos essenciais para o funcionamento de circuitos e sistemas eletrônicos. O propósito deste trabalho é a implementação de  uma fonte de alimentação linear para as tensões fixas de 12VDC, -12VDC, 5VDC e uma saída ajustável de 0 até 20VDC, desta forma, este equipamento poderá ser  utilizado em uma grande faixa de circuitos e projetos eletrônicos. As etapas de implementação são: O projeto, como cálculos básicos e a simulação; A montagem  com as considerações e cuidados a serem tomados; e as medidas, com os resultados e as comparações de desempenho. 
+
+\noindent
+\textbf{Palavras-chaves}: Fonte linear. 
+
+\end{resumo}
+
+% ----------------------------------------------------------
+% LISTA DE ILUSTRAÇÕES
+% ----------------------------------------------------------
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% LISTA DE TABELAS
+% ----------------------------------------------------------
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% LISTA DE ABREVIATURAS E SIGLAS
+% ----------------------------------------------------------
+\begin{siglas}
+   \item[VDC] \textit{Voltage Direct Current} - Tensão Contínua
+   \item[VAC] \textit{Voltage Alternating Current} - Tensão Alternada
+   \item[CI] Circuito Integrado
+   \item[CC] Corrente Contínua
+   \item[CA] Corrente Alternada
+   \item[IFSC] Instituto Federal de Educação Ciência e Tecnologia de Santa Catarina
+   \item[PCI] Placa de Circuito Impresso
+   \item[ABNT] Associação Brasileira de Normas Técnicas
+   \item[abnTex] Normas para \LaTeX
+   \end{siglas}
+
+% ----------------------------------------------------------
+% LISTA DE SIMBOLOS
+% ----------------------------------------------------------
+\begin{simbolos}
+   \item[$cm$] Centímetros - Unidade de comprimento
+   \item[$cm^{2}$] Centímetros Quadrados - Unidade de área
+   \item[$VA$] Volt-Ampere - Unidade de potência elétrica
+   \item[$W$] Watt's - Unidade de potência elétrica
+   \item[$V$] Volts - Unidade de potencial elétrico
+ 	\item[$A$] Ampere - Unidade de Corrente Elétrica
+ 	\item[$\Omega$] Ohms - Unidade de resistência elétrica
+ 	\item[$H$] Henry - Unidade de indutância elétrica
+ 	\item[$\,^{\circ}\mathrm{C}$] Grau Celcius - Unidade de temperatura
+\end{simbolos}
+
+% ----------------------------------------------------------
+% SUMÁRIO
+% ----------------------------------------------------------
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents
+\cleardoublepage
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+%\part{Introdução}
+% \include{./tex/intro}
+ \include{./tex/estudo_implementa}
+% \include{./tex/resultado}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS 
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{bib_eng_eletronic}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+ \begin{apendicesenv}
+ \include{./tex/cods}
+ \end{apendicesenv}
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+\begin{anexosenv}
+\include{./tex/anex}
+\end{anexosenv}
+
+%-----------------------------------------------------------
+% INDICE REMISSIVO
+%-----------------------------------------------------------
+% \phantompart
+% \printindex
+
+\end{document}

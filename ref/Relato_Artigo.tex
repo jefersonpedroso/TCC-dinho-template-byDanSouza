@@ -1,0 +1,740 @@
+%% abtex2-modelo-artigo.tex, v-1.9.2 laurocesar
+%% Copyright 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://abntex2.googlecode.com/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+% ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+% periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	article,			% indica que é um artigo acadêmico
+	11pt,				% tamanho da fonte
+	oneside,			% para impressão apenas no verso. Oposto a twoside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{verbatim}
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+		
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Implementação de uma fonte de alimentação linear}
+\autor{Daniel Henrique Camargo de Souza\thanks{Aluno de Graduação de Eng. Eletrônica(IFSC/DAELN) Mat:. 142002338-1}} 
+\local{Florianópolis - SC, Brasil}
+\data{Dezembro de 2014}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={Implementação de uma fonte de alimentação linear},
+%	    pdfcreator={},
+		pdfkeywords=, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+%---
+%
+% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+%
+%---
+% página de titulo
+\maketitle
+
+% resumo em português
+\begin{resumoumacoluna}
+ As fontes de alimentação são equipamentos essenciais para o funcionamento de circuitos e sistemas eletrônicos. O propósito deste trabalho é a implementação de uma fonte de alimentação linear para as tensões fixas de 12VDC, -12VDC, 5VDC e uma saída ajustável de 0 até 20VDC, desta forma, este equipamento poderá ser utilizado em uma grande faixa de circuitos e projetos eletrônicos. As etapas de implementação são: O projeto, como cálculos básicos e a simulação; A montagem com as considerações e cuidados a serem tomados; e as medidas, com os resultados e as comparações de desempenho. 
+ 
+ \vspace{\onelineskip}
+ 
+ \noindent
+ \textbf{Palavras-chaves}: Fonte linear.
+\end{resumoumacoluna}
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\section*{Introdução}
+%\addcontentsline{toc}{section}{Introdução}
+
+  Uma fonte de alimentação é um sistema eletrônico que tem a finalidade de fornecer uma diferença de potencial, na maioria das vezes fixa, em sua saída.% ou seja, é um circuito eletrônico que processa o sinal de uma alimentação primaria a fim de fornecer uma tensão desejada em sua saída. 
+Existem vários métodos para construir um sistema eletrônico de fonte de alimentação, pode-se citar dois grandes grupos, os lineares e os chaveados. Enquanto que nas fontes chaveadas trabalha-se com circuitos eletrônicos que processam a alimentação primaria por uma realimentação e chaveamento, nas fontes lineares temos a redução ou ampliação dos níveis do potencial da alimentação primaria por um transformador, sendo este um dispositivo eletromagnético que através do principio de indução eletromagnética reduz ou aumenta os níveis do potencial, desde que este seja alternado (VAC).
+
+%Neste trabalho, utilizou-se um sistema eletrônico de fonte alimentação linear, através da redução dos níveis de potencial por um transformador, da rede de alimentação da concessionária de energia elétrica que é 220VAC, e obteve-se saídas com +12VDC, -12VDC, +5VDC e uma saída ajustável de 0VDC até +20VDC. Estes níveis de potencial são aplicados na maioria dos circuitos e sistemas eletrônicos usuais, e a alimentação ajustável pode ser empregada em casos especiais ou em circuitos eletrônicos customizados.
+
+%No intuito de facilitar os cálculos e a elaboração do projeto, deu-se preferência pela utilização de reguladores de tensão comerciais, os circuitos integrados (CIs) 7812, 7912, 7805 e LM314, desta forma, diminui-se a complexidade e o tamanho do circuito eletrônico. No capitulo 2 será apresentado em detalhes o diagrama do projeto, a analise do circuito sob o regime de corrente continua (CC) com os cálculos básicos para as tensões, correntes e potências envolvidas, bem como será apresentada a etapa de simulação e a comparação dos resultados simulados e calculados. No capitulo 3, será detalhado a etapa de montagem do projeto em gabinete apropriado, suas etapas e aspectos. No capitulo 4, os testes e medidas, algumas considerações sobre gestão de risco e a comparação dos resultados das medições reais com os valores calculados e simulados e uma breve analise da variação entre estes resultados. Por fim, no capitulo 5, teremos as conclusões e considerações finais.
+%
+%
+%
+%
+\section{Gestão de risco em medidas elétricas}
+Quando trabalha-se com eletricidade, é de extrema importância que se adote ações sistematizadas na operação e realização de medidas.%, afim de garantir a proteção do operador e do futuro usuário contra acidentes e choques elétricos. 
+No Brasil existem normas de regulamentação que estabelecem medidas e ações a serem seguidas na operação e realização de medidas elétricas em maquinas, equipamentos e redes de energia. A NR-12 %da ABNT, trata da regulamentação e define técnicas, princípios e medidas de proteção ainda na fase de projeto e também na utilização de maquinas de equipamentos. Outra NR (Norma Regulamentadora) de grande importância é 
+e a NR-10 que orientam, regulamentam e definem ações a serem tomadas por profissionais que trabalham com energia elétrica e estão sujeitos ao risco decorrente da operação com eletricidade.
+
+%A Eletricidade, quando ocorre acidentes, provoca basicamente três tipos de situações: Queimaduras, Choque Elétrico e Incêndios, sendo que todas essas ocorrências podem ser fatais ao organismo humano, desta forma, medidas e ações, no mínimo de forma básica, devem ser tomadas quando houver operação com eletricidade.
+
+%Afim de dar subsídios básicos, listou-se algumas ações tomadas durante a etapa de medidas:
+%\begin{itemize}
+%\item Uso de Calçado com isolação adequada.
+%\item Realização das medidas em bancada adequada, com proteção de sobre-tensão e corrente de fuga.
+%\item Fixação das ponteiras de medição somente com o equipamento desligado.
+%\item Cuidado com contato fisíco em terminais e componentes com o equipamento ligado e exposto.
+%\end{itemize}
+Por fim, Controlar o risco é necessário e imprescindível para o profissional que trabalha com eletricidade, basicamente deve-se: identificar, analisar, avaliar e controlar o risco.
+
+\section{Circuito}
+
+O projeto do circuito a ser implementado foi fornecido pela disciplina de Projeto Integrador I da 1ª Fase da graduação de Engenharia Eletrônica do IFSC. Na figura~\ref{fig:FIG_circuito} é apresentado o diagrama esquemático do circuito. 
+
+\begin{figure}[htb!]
+\centering
+\caption{Circuito da fonte linear implementada}
+\includegraphics[scale=0.5]{./img/circuito_final.png}
+\label{fig:FIG_circuito}
+\legend{Fonte: Produzido pelo Autor}
+\end{figure} 
+
+\begin{comment}
+\subsection{Princípio de funcionamento}\label{funcionamento}
+No intuito de facilitar o entendimento do principio de funcionamento, pode-se inferir a partir da figura~\ref{fig:FIG_circuito} que o circuito é composto por 5 blocos: O transformador, Retificação, Filtro de entrada, Regulador e Filtro de saída. Na figura~\ref{fig:FIG_blocos} é apresentado a sequencia de atuação destes blocos,
+
+\begin{figure}[htb!]
+\centering
+\caption{Blocos do circuito}
+\includegraphics[scale=0.6]{./img/blocos.png}
+\label{fig:FIG_blocos}
+\end{figure} 
+
+O transformador é o elemento responsável pela redução do nível de tensão, estabelecendo uma relação de redução de 6,875 entre a tensão de entrada e a tensão de saída, desta forma, tendo-se uma tensão de entrada em 220VAC teremos na saída uma tensão de saída estimada em 32VAC. Neste projeto foi empregado um transformador com derivação central que nada mais é do que uma conexão interna no secundário do transformador dividindo-o ao centro, sendo assim, obteve-se uma divisão da tensão de saída, resultando em 32VAC, 16VAC e 0VAC ou para uma aplicação em simetria, como é o caso deste projeto, coloca-se a derivação central como referencial o que resulta em 16VAC e -16VAC simétricos.
+
+O bloco de retificação é composto por uma ponte de diodo, nome dado a ligação em simetria de 4 diodos retificadores, desta forma, ocorre a seleção dos mesmos semi-ciclos e com polaridade iguais na saída da ponte. Como utilizou-se o transformador com derivação central, será utilizado também o semi-ciclo com polaridade negativa (em relação a derivação central) que será utilizada no fornecimento, na saída final, da tensão fixa de -12VDC.
+
+Após a etapa de retificação, conforme pode-se observar na figura~\ref{fig:FIG_blocos}, o sinal de tensão não é mais alternado (variando entre os níveis positivos e negativos), porém ainda é um sinal pulsante (dentro da mesma polaridade), por conseguinte, é necessário um filtro de estabilização que irá atenuar a pulsação dos semi-ciclos. Isso é obtido com a aplicação de um capacitor, que além de atenuar consideravelmente a atenuação da pulsação dos semi-ciclos irá assegurar o armazenamento de cargas elétricas para o posterior abastecimento de corrente quando aplicar uma carga na saída.
+
+O regulador de tensão, neste projeto, é um CI comercial, foi utilizado os reguladores 7805, 7812 e 7912 para a regulação as tensões de 5VDC, 12VDC e -12VDC respectivamente, e o LM317 para a regulação da tensão ajustável. Estes CI's regulam e estabilizam a tensão, e fornecem em sua saída a tensão especificada pelo fabricante.
+
+Para eliminar possíveis ruídos e fornecer uma melhor estabilização da tensão, com a carga, neste projeto foi utilizado uma última etapa de filtro com capacitor aplicado na saída dos reguladores de tensão, este filtro tem por finalidade assegurar um mínimo de cargas elétricas no fornecimento de corrente com a carga, e eliminar ruídos de alta freqüência, provenientes da operação interna dos reguladores de tensão.
+\end{comment}
+
+\subsection{Cálculos Básicos}\label{Calculos}
+
+Tendo-se o circuito, é possível realizar uma análise básica e obter alguns valores teóricos para a potência, tensão e corrente de saída e saber qual será a carga máximo suportada na saída do circuito.
+
+O transformador utilizado tem uma relação de transformação de $220/16+16$, porém não tinha-se uma especificação de sua potência de saída, desta forma, a partir da relação entre a área do núcleo ($A^{2}$) e a potência ($P$), chegou-se no seguinte resultado
+\begin{equation}
+P = A^{2}
+\end{equation}
+Sendo que o núcleo o transformador possui os seguintes lados
+$L_1 = 2,8cm$ e $L_2 = 2.2cm$, temos que:
+\begin{eqnarray}
+A &=& L_1.L_2 \nonumber\\
+&=&(2,8)(2,2)\nonumber\\
+&=&6,16cm^{2}
+\end{eqnarray}
+sendo assim, sua potência teórica fica:
+\begin{eqnarray}
+P &=& A^{2}\nonumber\\
+&=&(6,16)^{2}\nonumber\\
+&=&37,94VA
+\end{eqnarray}
+Sabendo-se a potência, e a partir da expressão $I = P/V$, onde $I$ é a correte máxima, $P$ é a potência do transformador e $V$ e a tensão do secundário (sem a derivação central), obteve-se a corrente de saída máxima do transformador, sendo: $I = 37,94/32$, temos: $I = 1,18A$, sendo esta a corrente máxima fornecida pelo transformador. Porém, como utilizamos um transformador com derivação central, a potência em cada derivação será: $P = V.I$, $P = (16)(1,18)$, Logo: $P = 18,88VA$ em cada derivação. Levando-se em conta a correção do fator de potência, que nominalmente é de $0.5$ temos que a real potência, ou potência aparente em cada derivação do transformador é
+\begin{eqnarray}
+P_r &=& P(0.5)\nonumber\\
+&=&(18,88)(0.5)\nonumber\\
+&=&9,44VA
+\end{eqnarray}
+A partir desta potência será possível calcular a corrente máxima com carga na saída do circuito.
+
+Outra analise a levar em consideração é a tensão de pico na saída do transformador, pois será esta a tensão retificada e filtrada nas etapas seguintes do circuito. Desta forma, sabe-se que a tensão de pico é dada por, onde $V_p$ é a tensão de pico, $V_ef$ é a tensão eficaz: 
+\begin{eqnarray}
+V_p &=& (V_ef).\sqrt{2}\nonumber\\
+&=& (16).\sqrt{2}\nonumber\\
+&=& 22,56V
+\end{eqnarray}
+
+Na etapa de retificação, através da ponte de diodo como viu-se na seção~\ref{funcionamento},será observado sinal senoidal com semi-ciclos de mesma polaridade, com uma tensão de pico $V_p = 22,56$, porém sob a ponte de diodo ocorre um queda de tensão da ordem de $0.7$ Volts, desta forma após a retificação e com o sinal já filtrado pelo capacitor de entrada a tensão será de \textbf{$V_p = 21,56V$}.
+
+Sabendo a tensão após as etapas de retificação e filtro de entrada, podemos calcular a corrente de trabalho com carga, para isso se utiliza a seguinte expressão:
+$$
+I_{out} = \frac{P_r}{V_p}\nonumber\\
+= \frac{9,44}{21,56}\nonumber\\
+= 0,437 A
+$$
+
+Também pode-se partir para analisar as perdas de potência sob os reguladores de tensão, sabe-se que a tensão de entrada será a $V_p$ e a tensão de saída é a nominal fornecida pelo fabricante dos CIs (7805, 7812, 7912 e LM317). Desta forma, a queda de tensão em cada CI determinará a potência despendida (em forma de calor) pelo componente. temos os seguintes dados para cada CI. Para o 7805:
+$$V_{queda5V} = V_p - V_{nominal}\\
+= 21,56 - 5\\
+= 16,56V
+$$
+Potência dissipada:
+$$ P_{dissipada} = V_{queda5V}.I_{out}\\
+= (16,56).(0.437)\\
+= 7,23 W
+$$
+Para o 7812:
+$$V_{queda12V} = V_p - V_{nominal}\\
+= 21,56 - 12\\
+= 9,56V
+$$
+Potência dissipada:
+$$ P_{dissipada} = V_{queda12V}.I_{out}\\
+= (9,56).(0.437)\\
+= 4,17 W
+$$
+Para o 7912 obteremos os mesmos valores do 7812. Para o LM317 utilizaremos o maior valor de tensão de ajuste, que é $20VDC$, desta forma obteremos:
+$$V_{quedaLM} = V_p - V_{nominal}\\
+= 21,56 - 20\\
+= 1,56V
+$$
+Potência dissipada:
+$$ P_{dissipada} = V_{quedaLM}.I_{out}\\
+= (1,56).(0.437)\\
+= 0,68 W
+$$
+
+Finalmente, tendo-se a corrente máxima $I_{Out}$ e sabendo-se a tensão nominal de cada regulador é possível chegar na resistência de carga, logo para 12VDC:
+$$R_{12VDC} = \frac{V_{nominal}}{I_{Out}} \\
+= \frac{12}{0,437}\\
+= 27 \Omega
+$$
+Para 5VDC:
+$$R_{5VDC} = \frac{V_{nominal}}{I_{Out}} \\
+= \frac{5}{0,437}\\
+= 12 \Omega
+$$
+e finalmente para a saída ajustável:
+$$R_{20VDC} = \frac{V_{nominal}}{I_{Out}} \\
+=\frac{20}{0,437}\\
+= 45 \Omega
+$$
+
+Com os resultados calculados, parte-se para a etapa de simulação do circuito e posteriormente uma comparação dos valores calculados e simulados.
+
+\subsection{Simulação e comparação dos resultados}
+
+Para realizar a simulação, utilizou-se o software \textit{Proteus ISIS Schematic Capture} da Labcenter Electronics com licença para o IFSC. O diagrama esquemático montado no simulador é o apresentado na figura~\ref{fig:FIG_circuito}. Neste software de simulação a maioria dos componentes utilizados já apresentavam um modelo teórico computacional para a simulação, restava apenas encontrar, para o transformador, os parâmetros de indutância do primário e indutância do secundário. Para isso se utilizou a seguinte relação:
+\begin{equation}
+L_s = \frac{L_p}{(R_T)^{2}}
+\end{equation}
+Onde, $L_s$ é a Indutância no Secundário, $L_p$ é a Indutância no Primário e $(R_T)^{2}$ é o quadrado da relação de transformação. Desta forma, obtêm-se primeiramente a relação de transformação por: 
+$$R_T = \frac{V_{rede}}{V_{saída}}\\
+= \frac{220}{32}\\
+= 6,875 V
+$$ 
+e adota-se que a indutância do primário seja de $1H$, assim:
+$$L_s = \frac{L_p}{(R_T)^{2}}\\
+= \frac{1}{(6,875)^{2}}\\
+= 21,15mH
+$$
+
+A partir desses parâmetros de simulação, e com os cálculos básicos, obteve-se os seguintes resultados.
+
+\begin{table}[htb!]
+  \centering
+  \caption{Resultados Simulados e Calculados}
+  \label{tab:TABLE_simula}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \multicolumn{4}{|c|}{\textbf{Valores Calculados e Simulados}}\\	\hline
+    Variaveis&Calculados&Simulado(S/Carga)&Simulado(C/Carga)\\	\hline\hline
+    $V_{Trafo}$&32VAC&32,80VAC&32,80VAC\\	\hline
+	$V_{pico}$&21,56V&22,19V&21,35V\\	\hline
+	$V_{12}$&12V&12,01V&11,94V\\	\hline
+	$V_{-12}$&-12V&-12,04V&-11,99V \\	\hline
+	$V_{5}$&5V&5,00V&4,98V\\	\hline
+	$V_{Adj}$&20V&20,04V&19,02V \\	\hline\hline
+	$I_{Out_{12}}$&0,437A&\#\# &0,442A\\	\hline
+	$I_{Out_{-12}}$&-0,437A&\#\# &-0,444A \\	\hline
+	$I_{Out_{5}}$&0,437A&\#\# &0,415A\\	\hline
+	$I_{Out_{Adj}}$&0,437A&\#\# & 0,426A\\	\hline\hline
+	$P_{Out_{12}}$&4,17W&\#\# &4,17W\\	\hline
+	$P_{Out_{-12}}$&4,17W&\#\# &3,92W\\	\hline
+	$P_{Out_{5}}$&7,23W&\#\# &3,41W\\	\hline
+	$P_{Out_{Adj}}$&0,68W&\#\# &0,44W\\	\hline	
+  \end{tabular}
+  \fonte{Produzido pelo Autor}
+\end{table}
+%
+%
+%
+%
+%
+\section{Montagem}
+
+Para a montagem do equipamento foi fornecido pela disciplina de Projeto Integrador I da 1ª fase de Engenharia Eletrônica do IFSC, uma placa de Circuito Impresso (PCI), nesta placa se monta e solda-se todos os componentes do circuito da figura~\ref{fig:FIG_circuito}, e posteriormente será alocado esta PCI em um gabinete com o transformador e conexões necessárias para funcionamento do equipamento. 
+
+Para sistematizar e prevenir erros, toda a montagem foi subdividida em 4 etapas: Montagem na PCI dos blocos de retificação e filtro de entrada, Montagem na PCI dos Blocos de Reguladores e Filtro de Saída, Alocação do transformador e PCI no gabinete e conexões finais. 
+
+\subsection{Montagens na placa de circuito impresso - PCI}
+
+Com a PCI fornecida, e após a aquisição dos componentes eletrônicos apresentados no circuito da figura~\ref{fig:FIG_circuito} seguiu-se para a primeira etapa de montagem, na figura~\ref{PCI001} visualiza-se a PCI e os componentes para soldagem e na figura~\ref{PCI002} visualiza-se a face onde solda-se os componentes na PCI.
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{PCI e Componentes} \label{PCI001}
+   		\includegraphics[scale=0.25]{img/PCI001.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Lado da solda} \label{PCI002}
+   		\includegraphics[scale=0.25]{img/PCI002.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_PCI1}
+\end{figure}
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Blocos de retificação e filtro} \label{PCI003}
+   		\includegraphics[scale=0.37]{img/PCI003.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Soldas efetuadas} \label{PCI006}
+   		\includegraphics[scale=0.37]{img/PCI006.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_PCI2}
+\end{figure}
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Reguladores e dissipadores} \label{PCI005}
+   		\includegraphics[scale=0.25]{img/PCI005.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Montagem Completa} \label{PCI004}
+   		\includegraphics[scale=0.25]{img/PCI004.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_DISSIPADORES}
+\end{figure}
+
+Primeiramente soldou-se os componentes dos blocos de retificação e filtro de entrada, ou seja os diodos D1, D2, D3 e D4 e os capacitores C1, C2 e C8 identificados na figura~\ref{fig:FIG_circuito}. Na figura~\ref{PCI006} podemos visualizar estes componentes já soldados na PCI.
+
+Após essa primeira etapa, realizou-se testes de funcionamento para estes blocos, ligando o transformador na rede e a saída do secundário na ponte de retificação, verificou-se que até esta etapa o circuito estava funcionando dentro do esperado pelo projeto.
+
+A segunda etapa da montagem foi a solda dos blocos de reguladores e filtro de saída, nesta etapa foi necessária a alocação dos CI's reguladores (7805, 7812, 7912 e LM317) em dissipadores de calor, de forma que ficassem isolados elétricamente e acoplados termicamente. Na figura~\ref{PCI005} pode-se visualizar os reguladores acoplados aos seus dissipadores de calor e a PCI completa com todos os componentes soldados
+
+Quanto aos dissipadores, foi realizado um calculo básico a fim de encontrar a melhor especificação de tamanho do componente, desta forma, a partir da corrente máxima $I_{Out} = 0.437A$ e da potência dissipada em cada regulador (Conforme visto na seção~\ref{Calculos}) podemos obter a resistência térmica necessária para o dissipador, através da seguinte expressão:
+\begin{equation}
+R_{da} = \frac{T_j - T_A}{P_{dissipada}}
+\end{equation}
+Sendo $R_{da}$ a resistência dissipador-ambiente, $T_j$ a temperatura da junção dos reguladores (Dado pelo fabricante, sendo de $150\,^{\circ}\mathrm{C}$), $T_a$ a temperatura ambiente e $P_{dissipada}$ a potência dissipada por cada regulador, desta forma, a partir da maior potência dissipada (que neste projeto é pelo regulador 7805, sendo de $P_{dissipada} = 7,23W$, obteve-se o seguinte:
+$$
+R_{da} = \frac{T_j - T_A}{P_{dissipada}}\nonumber\\
+= \frac{150 - 30}{7,23}\nonumber\\
+= 16,59\,^{\circ}\mathrm{C}/Watt
+$$
+a partir deste valor, procura-se nos catálogos de fabricantes de dissipadores qual o melhor formato e tamanho de dissipador que possua no mínimo esse valor de resistência térmica.
+
+
+\subsection{Montagem da PCI e transformador em gabinete}
+
+Com a PCI completa, parte-se para a alocação da mesma em gabinete apropriado, juntamente com o transformador. Para isso escolheu-se o gabinete com dimensões compatíveis ao transfomador (que é o maior componente do projeto) e da largura da PCI, na figura~\ref{GAB002} pode-se visualizar o gabinete já com o transformador alocado e a PCI na espera das últimas conexões elétricas
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Transformador e gabinete} \label{GAB002}
+   		\includegraphics[scale=0.25]{img/GAB002.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Conexões com os bornes} \label{GAB003}
+   		\includegraphics[scale=0.25]{img/GAB003.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+\end{figure}
+
+Para finalizar a montagem resta apenas as ligações elétricas entre a PCI e os Bornes alocados no gabinete, esta etapa exige muito cuidado e precisão, pois caso as conexões fiquem expostas demais ao ponte de se encostarem, poderá haver o risco de danificar o equipamento ou até provocar choque elétrico ao usuário durante o manuseio do equipamento. Na figura~\ref{GAB003} e figura~\ref{GAB004} pode-se visualizar as conexões prontas e a alocação final da PCI e transformador dentro do gabinete.
+
+\begin{figure}
+	\centering
+	\caption{Aspecto final da montagem interna no gabinete}
+	\includegraphics[scale=0.3]{img/GAB004.jpg}
+	\label{GAB004}
+	\legend{Fonte: Produzido pelo autor}
+\end{figure}
+
+\section{Resultados e Discussões}
+
+Tendo-se a fonte montada e acondicionada em gabinete apropriado, parte-se para a etapa de coleta de medidas e a comparação dos resultados com os já previamente calculados e simulados.
+
+Antes da realização das medidas, é importante discorrer sobre a gestão de risco na operação e realização de medidas elétricas. sendo assim apresenta-se na próxima seção uma breve orientação acerca da gestão de risco.
+
+\subsection{Realização das medidas}
+O primeiro resultado coletado foi a verificação (ainda na etapa de montagem) do funcionamento do transformador e do bloco de retificação e filtro de entrada. Na figura~\ref{fig:FIG_MEDTRAFO} pode-se visualizar as medições sendo realizadas, e como pode-se notar esta etapa teve o resultado esperado de funcionamento
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Medição do transformador} \label{MED001}
+   		\includegraphics[scale=0.25]{img/MED001.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Tensão Retificada} \label{MED002}
+   		\includegraphics[scale=0.25]{img/MED002.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_MEDTRAFO}
+\end{figure}
+
+Em todas as medidas de tensão foi utilizado um multimetro modelo \textit{ET-1002} da fabricante \textit{Minipa} pertencente aos laboratórios do IFSC, Engenharia Eletrônica, também foi utilizado para verificar o sinal de \textit{ripple}, quando com carga, um osciloscópio digital modelo \textit{TBS 1062} da fabricante \textit{Tektronix} também pertencente aos laboratorios do IFSC.
+
+As próximas medidas realizadas foram as tensões de saída fixas, sem carga, e os valores mínimos e máximo da tensão ajustável (LM3017), os resultados podem ser visualizados na tabela~\ref{tab:TABLE_medidas}
+
+No intuito de verificar gradativamente o funcionamento da fonte, adotou-se o procedimento de realizar medidas com 50\% do valor de carga (Resistência de carga), na figura~\ref{fig:FIG_MED50} pode-se visualizar a etapa de medição, com 50\% do valor da carga, para as saída de 12VDC e -12VDC, os demais resultados estão na tabela~\ref{tab:TABLE_medidas} Vale salientar que a resistência de meia carga (50\%) é o dobro do valor calculado, porém, como somente há valores estabelecidos comercialmente para resistência, utilizou-se um valor aproximado de 41$\Omega$
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{50\% de carga em 12VDC} \label{MED003}
+   		\includegraphics[scale=0.25]{img/MED003.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{50\% de carga em -12VDC} \label{MED004}
+   		\includegraphics[scale=0.25]{img/MED004.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_MED50}
+\end{figure}
+
+Verificado o funcionamento do equipamento em 50\% da carga, parte-se para o funcionamento com carga completa a 100\% e a verificação da temperatura dos reguladores de tensão. A verificação da temperatura é um resultado importante, pois os reguladores são os componentes que irão dissipar maior calor e conseqüentemente os que mais estarão sujeitos a serem danificados, por isso, mede-se a temperatura com a maior carga que será imposta no equipamento e compara-se com a temperatura ambiente e o máximo estabelecido pelo fabricante, com isso pode-se inferir sobre a eficiência dos dissipadores escolhidos e estabelecer (se for o caso) correções ou adequações. Na figura~\ref{fig:FIG_MED100} pode-se visualizar a mediação da temperatura nos reguladores de 5VDC e -12VDC.
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{100\% de carga em 5VDC} \label{MED005}
+   		\includegraphics[scale=0.25]{img/MED005.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{100\% de carga em -12VDC} \label{MED006}
+   		\includegraphics[scale=0.25]{img/MED006.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_MED100}
+\end{figure}
+Como pode-se notar, no instante de medição da temperatura, também se faz medição da tensão de saída com 100\% de carga, todos os valores de tensão à 100\% de carga estão expostos na tabela~\ref{tab:TABLE_medidas}
+
+Apenas como uma verificação, também se realizou medidas da tensão via osciloscópio, onde pode-se notar o nível do \textit{Ripple} quando a fonte é submetida a 100\% de carga. Nas figura~\ref{MED007} e figura~\ref{MED008} pode-se visualizar a diferença que ocorre nos sinais antes e depois da aplicação da carga,
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Sinal sem carga em 5VDC} \label{MED007}
+   		\includegraphics[scale=0.25]{img/MED007.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Sinal com 100\% de carga em 5VDC} \label{MED008}
+   		\includegraphics[scale=0.25]{img/MED008.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_MEDRIPPLE1}
+\end{figure}
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Sinal sem carga em 12VDC} \label{MED010}
+   		\includegraphics[scale=0.25]{img/MED010.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Sinal com 100\% de carga em 12VDC} \label{MED009}
+   		\includegraphics[scale=0.25]{img/MED009.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_MEDRIPPLE2}
+\end{figure}
+
+Na figura~\ref{MED007} e figura~\ref{MED010} visualiza-se o sinal em azul, que é o sinal da saída da fonte, logo após o regulador e do filtro de saída, enquanto que o sinal em amarelo é a medida realizada na entrada do regulador, logo após a retificação e do filtro de entrada. Nota-se, a partir das figuras~\ref{MED008} e ~\ref{MED009} que o sinal de entrada (em amarelo) no regulador apresenta uma variação (ondulação), que ocorre justamente por estar ligado na saída 100\% de carga. 
+
+Por fim, realizou-se a medição das corrente de saída com 100\% da carga, para isso foi preciso dois multimetros, um deste configurado na opção de medida de corrente. na figura~\ref{fig:FIG_MEDII} pode-se visualizar as medições da corrente e tensão para as saída de -12VDC e 5VDC respectivamente.
+\begin{figure}[htb!]
+   \centering
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Corrente em -12VDC} \label{MED011}
+   		\includegraphics[scale=0.25]{img/MED011.jpg}
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \hspace{1.5cm}
+   \begin{minipage}{0.4\textwidth}
+   		\centering
+   		\caption{Corrente em 5VDC} \label{MED012}
+   		\includegraphics[scale=0.25]{img/MED012.jpg} 
+   		\legend{Fonte: Produzido pelo autor}
+   \end{minipage}
+   \label{fig:FIG_MEDII}
+\end{figure}
+
+\subsection{Resultados obtidos}
+A tabela~\ref{tab:TABLE_medidas} é a compilação de todos os resultados medidos, as tensões de saída sem carga, com 50\% de carga, com 100\% carga e correntes com 50\% e 100\% de carga. A temperatura medida e apresentada na tabela~\ref{tab:TABLE_medidas} é obtida em cima do regulador de tensão quando tem-se 100\% de carga na saída.
+\begin{table}[htb!]
+  \centering
+  \caption{Resultados das medições}
+  \label{tab:TABLE_medidas}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Medidas de Tensão, Corrente e Temperatura}}\\	\hline
+    Variáveis&Sem Carga&50\% de Carga&100\% de Carga&Temperatura (carga 100\%)\\	\hline\hline
+    $V_{Trafo}$&32,7VAC&32,5VAC&32,5VAC&\#\#\\	\hline
+	$V_{pico}$&23V&21,8V&20,4V&\#\#\\	\hline
+	$V_{12}$&11,98V&11,88V&11,88V&40,5$\,^{\circ}\mathrm{C}$\\	\hline
+	$V_{-12}$&-12,12V&-11,7V&-11,88V&50,5$\,^{\circ}\mathrm{C}$ \\	\hline
+	$V_{5}$&5,03V&4,97V&4,94V&38,0$\,^{\circ}\mathrm{C}$\\	\hline
+	$V_{Adj}$&19,92V&19,74V&19,51V&32,5$\,^{\circ}\mathrm{C}$ \\ \hline
+	$V_{Adj_{Mín}}$&1,26V&\multicolumn{3}{|c|}{\#\#}\\ \hline
+	$V_{Adj_{Máx}}$&21,70V&\multicolumn{3}{|c|}{\#\#}\\ \hline\hline
+	$I_{Out_{12}}$&\#\# &0,24A&0,43A&\#\#\\	\hline
+	$I_{Out_{-12}}$&\#\# &0,24A&0,43A&\#\# \\	\hline
+	$I_{Out_{5}}$&\#\# &0,23A&0,34A&\#\#\\	\hline
+	$I_{Out_{Adj}}$&\#\# &0,24A&0,34A&\#\#\\	\hline\hline
+%	$V_{Adj_{Mín}}$&1,26V &$V_{Adj_{Máx}}$&21,70V&\#\#\\	\hline\hline
+%	$P_{Out_{-12}}$&\#\# &&3,92W\\	\hline
+%	$P_{Out_{5}}$&\#\# &ND&3,41W\\	\hline
+%	$P_{Out_{Adj}}$&\#\# &ND&0,44W\\	\hline	
+  \end{tabular}
+  \fonte{Produzido pelo Autor}
+\end{table}
+
+Com as medidas realizadas é possível efetuar uma comparação entre os valores calculados, simulados e medidos para 100\% de carga, e com isso encontrar a variação de tensão obtida entre estes dados. Na tabela~\ref{tab:TABLE_compara} pode-se visualizar esses valores, bem como a variação obtida entre os valores calculados/simulados e calculados/medidos.
+\begin{table}[htb!]
+  \centering
+  \caption{Comparação dos resultados}
+  \label{tab:TABLE_compara}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{6}{|c|}{\textbf{Comparação dos valores, calculados, simulados e medidos}}\\	\hline
+    Variáveis&Calculados&Simulados&Medidos&\%Calc/Sim&\%Calc/Med\\	\hline\hline
+    $V_{Trafo}$&32VAC&32,8VAC&32,5VAC&2,5\%&1,6\% \\	\hline
+	$V_{pico}$&21,56V&21,35V&20,4V&1\%&5,4\% \\	\hline
+	$V_{12}$&12V&11,94V&11,88V&0,5\%&1\% \\	\hline
+	$V_{-12}$&-12V&-11,99V&-11,88V&0,1\%&1\% \\	\hline
+	$V_{5}$&5V&4,98V&4,94V&0,4\%&2,2\% \\	\hline
+	$V_{Adj}$&20V&19,02&19,51V&4,9\%&2,5\% \\	\hline\hline
+	$I_{Out_{12}}$&0,437A&0,442A&0,43A&1,1\%&1,7\%\\	\hline
+	$I_{Out_{-12}}$&0,437A&0,444A&0,43A&1,6\%&1,7\%\\	\hline
+	$I_{Out_{5}}$&0,437A&0,415A&0,34A&5,1\%&22,1\%\\	\hline
+	$I_{Out_{Adj}}$&0,437A&0,426A&0,34A&2,6\%&22,1\%\\	\hline\hline
+%	$P_{Out_{12}}$&\#\# &2,85W&44W\\	\hline
+%	$P_{Out_{-12}}$&\#\# &&3,92W\\	\hline
+%	$P_{Out_{5}}$&\#\# &ND&3,41W\\	\hline
+%	$P_{Out_{Adj}}$&\#\# &ND&0,44W\\	\hline	
+  \end{tabular}
+  \fonte{Produzido pelo Autor}
+\end{table}
+
+Como pode-se visualizar, as comparações dos resultados tiverem resultados com uma variação muito pequena o que demonstra que o circuito se comportou conforme o projeto e os cálculos propostos.
+%
+%
+%
+%
+%
+\section{Conclusão e Considerações Finais}
+
+A Fonte de tensão linear é um equipamento essencial para circuitos e sistemas eletrônicos, neste projeto buscou-se implementar uma fonte que atende a maioria dos circuitos eletrônicos, com saídas de 12VDC, -12VDC, 5VDC e uma ajustável de 0-20VDC, assim, na maioria das situações este circuito pode ser implementado e aplicado.
+
+Os resultados obtidos demonstraram que os cálculos e as analises feitas estavam corretos, obteve-se variações muito pequenas entras as medidas realizadas e os cálculos efetuados, isso demonstra de forma concreta o funcionamento adequado do equipamento implementado.
+
+A realização deste projeto, ainda na primeira fase, do curso de graduação em Engenharia Eletrônica do IFSC, fornece subsídios que serão úteis e utilizáveis durante todo o percurso da graduação, alem de ao final do processo, fornecer um equipamento que será amplamente utilizado na graduação inteira.
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ---
+% Título e resumo em língua estrangeira
+% ---
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+%\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Há diversas soluções prontas para glossário em LaTeX. 
+% Consulte o manual do abnTeX2 para obter sugestões.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+
+\end{document}
